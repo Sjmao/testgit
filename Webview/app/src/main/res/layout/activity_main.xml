@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+    <com.example.webview.AutoScrollTextView
+        android:id="@+id/TextViewNotice"
+        android:layout_width="fill_parent"
+        android:layout_height="30px"
+        android:layout_alignParentTop="true"
+        android:background="#EEE"
+        android:inputType="text"
+        android:text="hello, welcome to my app"
+        android:textColor="#000"
+        android:textSize="20px" >
+    </com.example.webview.AutoScrollTextView>
+    <Button
+        android:id="@+id/but1"
+        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/TextViewNotice"
+        android:layout_alignParentRight="true"
+        android:textSize="14sp"
+        android:onClick="onClick"
+        android:text="添加"
+        />
+    <Button
+        android:id="@+id/but2"
+        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/TextViewNotice"
+        android:layout_alignParentRight="true"
+        android:textSize="14sp"
+        android:onClick="onClick"
+        android:text="完成"
+        android:visibility="gone"
+        />
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_toLeftOf="@id/but2"
+        android:layout_below="@id/TextViewNotice"
+        android:layout_alignBottom="@id/but2"
+        android:gravity="bottom"
+        android:weightSum="2"
+        android:orientation="horizontal">
+          <EditText
+        android:id="@+id/edit1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="请输入笔记名"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:visibility="gone" />
+     <EditText
+        android:id="@+id/edit2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="请输入url路径"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:visibility="gone" />
+  
+   </LinearLayout>
+     <Spinner
+        android:id="@+id/myspinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewNotice"
+        android:layout_toLeftOf="@id/but1"
+        android:layout_alignBottom="@id/but1"
+         />
+     <TextView
+         android:id="@+id/describe"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_toLeftOf="@id/but1"
+         android:layout_alignBottom="@id/but1"
+         android:text="长按可删除"
+         android:textSize="14sp"
+         android:layout_marginRight="20dp"
+         android:layout_marginBottom="10dp"
+         android:textColor="#6c6c6c"
+         android:visibility="gone"
+         />
+     <WebView
+        android:id="@+id/myweb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        />
+
+</RelativeLayout>

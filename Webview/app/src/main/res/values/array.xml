@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="web">
+        <item>文字跑马灯</item>
+        <item>Android开发技术周报</item>
+        <item>好的资源链接</item>
+        <item>Android常用学习资源</item>
+        <item>安卓开源项目分类</item>
+        <item>android绘画</item>
+        <item>spinner取值</item>
+        <item>map value 取key</item>
+        <item>手势滑动事件处理方法</item>
+        <item>百度地图学习1</item>
+        <item>百度地图学习2</item>
+        <item>百度地图多点标记学习1</item>
+        <item>高手博客1</item>
+        <item>高手博客2</item>
+        <item>高手博客3</item>
+        <item>android基础学习</item>
+        <item>android基础学习2</item>
+        <item>imageloader学习</item>
+        <item>string动态修改值</item>
+        <item>webview缓存</item>
+        <item>spinner动态添加删除数据</item>
+        <item>音乐播放器实现</item>
+        <item>sharedpreference 数据存储</item>
+        <item>获取系统服务</item>
+        <item>获取windows管理服务</item>
+        <item>listView和viewpager冲突</item>
+        <item>sqlite基本使用</item>
+        <item>自学笔记资源文件篇</item>
+        <item>自学笔记代码文件篇</item>
+        <item>分享与被分享</item>
+        <item>数据连接状态篇判断</item>
+        <item>timer和timerTask</item>
+        <item>文件存储</item>
+        <item>属性动画暂停</item>
+        <item>图片伸缩</item>
+        <item>事件分发</item>
+        <item>常用正则表达式</item>
+        <item>sqlite基础</item>
+        <item>javaIO基础</item>
+        <item>ScrollView</item>
+        <item>Rxjava异步</item>
+        <item>杂学之品性</item>
+        <item>httpClient及android 原生接口实现下载并显示图片</item>
+        <item>Android中Bitmap和Drawable </item>
+        <item>Art of Android Development Reading Notes</item>
+        <item>破碎效果</item>
+        <item>弹幕效果</item>
+        <item>音乐播放器</item>
+        <item>测试音乐</item>
+        <item>高手博客基础篇</item>
+        <item>基础算法题</item>
+        <item>android基本总结</item>
+        <item>项目总结</item>
+        <item>gradle基础</item>
+        <item>android网络请求框架+项目例子</item>
+    </string-array>
+    <string-array name="weburl">
+        <item>http://blog.csdn.net/chenshi011/article/details/7792326</item>
+        <item>http://androidweekly.cn/</item>
+        <item>file:///android_asset/learn_link.html</item>
+        <item>https://malinkang.gitbooks.io/androidnote/content/index.html</item>
+        <item>https://github.com/Trinea/android-open-project</item>
+        <item>http://www.cnblogs.com/menlsh/archive/2012/11/18/2776003.html</item>
+        <item>http://blog.chinaunix.net/uid-26959955-id-3559278.html</item>
+        <item>http://my.oschina.net/songhongxu/blog/191700</item>
+        <item>http://www.2cto.com/kf/201307/229485.html</item>
+        <item>http://www.open-open.com/lib/view/open1328756009421.html</item>
+        <item>http://blog.163.com/shexinyang@126/blog/static/136739312201452033052757/</item>
+        <item>http://www.bubuko.com/infodetail-451754.html</item>
+        <item>http://blog.csdn.net/lmj623565791?</item>
+        <item>http://blog.csdn.net/elinavampire?viewmode=contents</item>
+        <item>http://blog.csdn.net/footballclub?viewmode=contents</item>
+        <item>http://blog.csdn.net/duancanmeng/article/details/7335580</item>
+        <item>http://www.2cto.com/kf/201403/287670.html</item>
+        <item>http://blog.csdn.net/xiaanming/article/details/26810303</item>
+        <item>http://www.cnblogs.com/yourancao520/archive/2012/06/06/2537600.html</item>
+        <item>http://www.open-open.com/lib/view/open1392188052301.html</item>
+        <item>http://blog.csdn.net/duchunchao/article/details/6094314</item>
+        <item>http://terryblog.blog.51cto.com/1764499/339630/</item>
+        <item>http://www.jb51.net/article/31911.htm</item>
+        <item>http://blog.csdn.net/beifengdelei/article/details/7861395</item>
+        <item>http://blog.csdn.net/luoshengyang/article/details/8462738</item>
+        <item>http://www.apkbus.com/android-144738-1-1.html</item>
+        <item>http://www.jb51.net/article/36062.htm</item>
+        <item>file:///android_asset/resource.html</item>
+        <item>file:///android_asset/coding.html</item>
+        <item>http://blog.csdn.net/xyz_lmn/article/details/16856843</item>
+        <item>file:///android_asset/internetconnect.html</item>
+        <item>http://www.cnblogs.com/dolphin0520/p/3938991.html</item>
+        <item>http://blog.csdn.net/xiazdong/article/details/7687439</item>
+        <item>http://m.blog.csdn.net/blog/zhaoqiangster_tjsd/10358357</item>
+        <item>http://www.jb51.net/article/37205.htm</item>
+        <item>http://blog.csdn.net/lvxiangan/article/details/9309927</item>
+        <item>http://blog.csdn.net/bigapple88/article/details/6248880</item>
+        <item>http://blog.csdn.net/codeeer/article/details/30237597</item>
+        <item>http://www.cnblogs.com/rollenholt/archive/2011/09/11/2173787.html</item>
+        <item>http://mobile.51cto.com/android-447711.htm</item>
+        <item>http://gank.io/post/560e15be2dca930e00da1083#toc_1</item>
+        <item>http://wenku.baidu.com/link?url=TZpFmBDtaIRIDfHR7-CiAGjvxSvbKUj2w4nWPGtoMi58zyr3ewTqHQDOjWqcP61FHwPODsBoTm_ZWNMM19c3wPfUMj2cDxZ70DbOTQxZXva</item>
+        <item>http://blog.csdn.net/harvic880925/article/details/17609771</item>
+        <item>http://blog.sina.com.cn/s/blog_5a6f39cf0101aqsw.html</item>
+        <item>http://hujiaweibujidao.github.io/blog/2015/12/05/Art-of-Android-Development-Reading-Notes/</item>
+        <item>http://blog.csdn.net/xieyupeng520/article/details/49951835</item>
+        <item>http://blog.csdn.net/XieYupeng520/article/details/49232925</item>
+        <item>http://www.jizhuomi.com/android/example/104.html</item>
+        <item>http://www.htqyy.com/music/play/262</item>
+        <item>http://blog.csdn.net/u010321471/article/category/3096345/1</item>
+        <item>https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/Readme.md</item>
+        <item>https://github.com/FX-Max/Point-of-Android</item>
+        <item>http://hunankeda110.iteye.com/blog/2103569</item>
+        <item>http://segmentfault.com/a/1190000002439306</item>
+        <item>http://m.oschina.net/blog/377283</item>
+    </string-array>
+
+</resources>

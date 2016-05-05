@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0037)http://www.jb51.net/article/51556.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+
+<title>Android中监听判断网络连接状态的方法_Android_脚本之家</title>
+<meta http-equiv="Content-Language" content="zh-CN">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://m.jb51.net/article/51556.htm">
+<meta http-equiv="mobile-agent" content="format=xhtml; url=http://m.jb51.net/article/51556.htm">
+<script charset="utf-8" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/t.js"></script><script async="" type="text/javascript" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/ca-pub-6384567588307613.js"></script><script type="text/javascript">
+if((navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)))
+{
+    location.replace("http://m.jb51.net/article/51556.htm");
+}
+</script>
+<meta name="keywords" content="Android,监听判断网络连接">
+<meta name="description" content="这篇文章主要介绍了Android中监听判断网络连接状态的方法,介绍了是否有网络连接判断、连接的类型和监听网络状态的方法,需要的朋友可以参考下">
+<link rel="stylesheet" href="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/global.css" type="text/css" media="all">
+<link rel="stylesheet" href="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/content.css" type="text/css" media="all">
+<link type="text/css" rel="stylesheet" href="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/shCore.css">
+<link type="text/css" rel="Stylesheet" href="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/shThemeDefault.css">
+<script type="text/javascript" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/function.js"></script>
+<script type="text/javascript" async="" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/embed.js" charset="UTF-8"></script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/logger.js"></script><link type="text/css" rel="stylesheet" href="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/embed.default.css"><link href="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/bdsstyle.css" rel="stylesheet" type="text/css"><style></style></head>
+<body><div id="BAIDU_DUP_fp_wrapper" style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;"><iframe id="BAIDU_DUP_fp_iframe" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/o.html" style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe></div><iframe frameborder="0" style="display: none;"></iframe><div id="bdshare_s" style="display: block;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0"></iframe><div id="bdshare_l" style="display: none;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_renren rrw">人人网</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_douban db">豆瓣网</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_thx thx">和讯微博</a></li><li><a href="http://www.jb51.net/article/51556.htm#" class="bds_more">更多...</a></li></ul><p><a href="http://www.jb51.net/article/51556.htm#" class="goWebsite">百度分享</a></p></div></div></div>
+<div id="topnav">
+<div class="wrap">
+<div id="toptext">脚 本 之 家 www.jb51.net</div>
+<ul id="topnavlist">
+<script type="text/javascript" charset="gb2312">dy("top");</script><li><a href="http://idc.jb51.net/?jb51" target="_blank" style="color:red">脚本云</a></li>
+<li><a href="http://www.jb51.net/zt/" target="_blank">专题</a></li>
+<li><a href="http://sc.jb51.net/" target="_blank">素材下载</a></li>
+<li><a href="http://www.jb51.net/books/" target="_blank" style="color:red">电子书</a></li>
+<li><a href="http://www.jb51.net/softs/" target="_blank">软件下载</a></li>
+<li><a href="http://www.jb51.net/codes/" target="_blank">源码下载</a></li>
+<li><a href="http://s.jb51.net/" target="_blank">服务器常用软件</a></li>
+<li><a href="http://www.admin5.net/" target="_blank" style="color:red">a5交易</a></li>
+
+</ul>
+</div>
+</div>
+<div class="wrap">
+<div id="dxy_logo">
+<div id="logo_l"><a href="http://www.jb51.net/" title="脚本之家" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/logo.gif" alt="脚本之家"></a></div>
+<div id="logo_m"><script type="text/javascript">dy("logo_m");</script><a href="http://www.danhw.com/" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/kongbao_370.gif" width="370" height="60"></a>
+</div>
+<div id="logo_r"><script type="text/javascript">dy("logo_r");</script><a href="http://cloud.51idc.com/" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/51idc_370.gif" width="370" height="60"></a></div>
+</div><!--导航开始-->
+<div id="nav_top">
+<ul>
+<li class="current"><a href="http://www.jb51.net/">首页</a></li>
+<li><a href="http://www.jb51.net/web/">网页制作</a></li>
+<li><a href="http://www.jb51.net/list/index_96.htm">脚本专栏</a></li>
+<li><a href="http://www.jb51.net/jiaoben/">脚本下载</a></li>
+<li><a href="http://www.jb51.net/list/index_1.htm">网络编程</a></li>
+<li><a href="http://www.jb51.net/list/index_104.htm">数据库</a></li>
+<li><a href="http://www.jb51.net/cms/">CMS教程</a></li>
+<li><a href="http://www.jb51.net/books/">电子书籍</a></li>
+<li><a href="http://www.jb51.net/pingmian/">平面设计</a></li>
+<li><a href="http://www.jb51.net/media/">媒体动画</a></li>
+<li><a href="http://www.jb51.net/os/">操作系统</a></li>
+<li><a href="http://www.jb51.net/yunying/">网站运营</a></li>
+<li class="last"><a href="http://www.jb51.net/hack/">网络安全</a></li>
+</ul>
+</div><!--导航结束-->
+<div class="blank3"></div>
+<div class="subnav">
+<ul><li><a href="http://www.jb51.net/list/list_85_1.htm" title="C#教程">C#教程</a></li>
+<li><a href="http://www.jb51.net/list/list_93_1.htm" title="vb">vb</a></li>
+<li><a href="http://www.jb51.net/list/list_205_1.htm" title="vb.net">vb.net</a></li>
+<li><a href="http://www.jb51.net/list/list_159_1.htm" title="C 语言">C 语言</a></li>
+<li><a href="http://www.jb51.net/list/list_134_1.htm" title="Java编程">Java编程</a></li>
+<li><a href="http://www.jb51.net/list/list_206_1.htm" title="Delphi">Delphi</a></li>
+<li><a href="http://www.jb51.net/list/list_207_1.htm" title="java">java</a></li>
+<li><a href="http://www.jb51.net/list/list_233_1.htm" title="Android">Android</a></li>
+<li><a href="http://www.jb51.net/list/list_238_1.htm" title="IOS">IOS</a></li>
+<li><a href="http://www.jb51.net/list/list_244_1.htm" title="Swift">Swift</a></li>
+<li><a href="http://www.jb51.net/list/list_250_1.htm" title="Scala">Scala</a></li>
+<li><a href="http://www.jb51.net/list/list_188_1.htm" title="其它相关">其它相关</a></li>
+</ul>
+</div>
+<div class="blank3"></div>
+<div class="search">
+<ul><li class="search-hot"><span>特色栏目：</span>
+<a href="http://www.jb51.net/list/list_114_1.htm" target="_blank">vbscript</a> 
+<a href="http://www.jb51.net/list/list_6_1.htm" target="_blank">正则表达式</a> 
+<a href="http://www.jb51.net/list/list_3_1.htm" target="_blank">javascript</a>
+<a href="http://www.jb51.net/list/list_106_1.htm" target="_blank">批处理</a>
+<a href="http://s.jb51.net/">服务器软件</a> 
+<a href="http://sc.jb51.net/?txt" target="_blank" style="color:red">素材下载</a> 
+</li><li class="search-box">
+<div class="sall">
+<form action="http://so.jb51.net/cse/search" target="_blank">
+    <input type="hidden" name="s" value="10520733385329581432">
+    <input type="hidden" name="ie" value="gbk">
+    <input type="text" name="q" class="keyword_input">
+    <input type="submit" value="搜索" class="s_btn">
+</form></div>
+</li></ul>
+</div>
+<div class="blank3"></div>
+<div class="tonglanad">
+<script type="text/javascript">var tougao="junjie";var lmname="Android";dy("bdtl");</script><script type="text/javascript">var cpro_id = "u336546";</script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u336546_0"><iframe id="cproIframe_u336546_1" width="960" height="90" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(11).html" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom"></script>
+
+</div>
+<div class="blank3"></div>
+<div id="tonglan1"><script type="text/javascript">dy("tonglan1");</script><div id="txtlink"><ul><li><a href="http://www.mbazj.com/" target="_blank"><span style="color:red;">免备案空间1G免费用/代理无门槛</span></a></li><li><a href="http://www.jsll.me/" target="_blank"><span style="color:red;">低价出售流量10000IP只需8元</span></a></li><li><a href="http://click.aliyun.com/m/1332/" target="_blank"><span style="color:red;">阿里云28.8/月起，年度只付10个月</span></a></li><li><a href="http://idc.jb51.net/?txt" target="_blank"><span style="color:red;">脚本之家 百M独享服务器托管、租用</span></a></li><li><a href="http://www.verycloud.cn/" target="_blank"><span style="color:blue;">VeryCloud 专业cdn加速服务商</span></a></li><li><a href="http://www.vzidc.com/" target="_blank"><span style="color:blue;">微子网络 湛江双线高防 抗15G 700元起</span></a></li><li><a href="http://www.tuidc.com/" target="_blank"><span style="color:blue;">服务器租用/托管-域名空间/认准腾佑科技</span></a></li><li><a href="http://idc.jb51.net/?txt" target="_blank"><span style="color:blue;">脚本之家云主机，云空间，云服务器</span></a></li><li><a href="http://www.021.net/" target="_blank"><span style="color:red;">众生网络 基于云计算的互联网基础服务运营商</span></a></li><li><a href="http://idc.jb51.net/?jb51" target="_blank"><span style="color:red;">双核10M独享云服务器特价98元/月</span></a></li><li><a href="http://www.enkj.com/idc/tuoguan/" target="_blank"><span style="color:red;">BGP四线 亿恩1U服务器托管3999元/年</span></a></li><li><a href="http://www.jjidc.com/" target="_blank"><span style="color:red;">九九数据 — 工信部认可正规资质IDC接入商</span></a></li><li><a href="http://www.33ip.com/" target="_blank"><span style="color:blue;">枫信科技-江苏双线10M保证-399/元</span></a></li><li><a href="http://idc.jb51.net/?jb51" target="_blank"><span style="color:blue;">四核15M独享服务器特价188元/月</span></a></li><li><a href="http://www.ssf.cc/" target="_blank"><span style="color:blue;">免备vps20/百独799/双线350/45互联</span></a></li><li><a href="http://www.verycloud.cn/" target="_blank"><span style="color:blue;">VeryCloud云主机，仅需29元，抢疯了！</span></a></li><li><a href="http://www.139w.com/100m.asp" target="_blank"><span style="color:red;">鼎点网络百兆独享服务器仅需999元</span></a></li><li><a href="http://www.163cdn.com/" target="_blank"><span style="color:red;">免备案国内虚拟主机-163cdn</span></a></li><li><a href="http://www.cyidc.cc/" target="_blank"><span style="color:red;">畅游网络 百独服务器 包跑满 998元</span></a></li><li><a href="http://www.wdw6.com/" target="_blank"><span style="color:red;">服务器租用 199/月起</span></a></li></ul><div class="clear"></div></div><div class="blank2"></div><div class="blank2"></div><div class="topimg"><ul><li><a href="http://www.west263.com/services/CloudHost/?ads=jb512014" target="_blank"><img alt="" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/west263_237.gif" width="237" height="60"></a></li><li><a href="http://js.50bang.org/?formType=7790" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/2345.gif" alt="装机设首页" width="237" height="60"></a></li><li><a href="http://www.wsisp.net/?jb51" target="_blank"><img alt="" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/wsisp.gif" width="237" height="60"></a></li><li><a href="http://www.7e.hk/" target="_blank"><img alt="" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/7ehk.gif" width="237" height="60"></a></li></ul></div><div class="blank2"></div><div class="mainlr"><a href="http://www.rongcloud.cn/promotion" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/rongcloud.gif" alt="融云" width="1000" height="60"></a></div><div class="blank2"></div><div class="mainlr"><a href="http://click.aliyun.com/m/1044/" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/aliyun1000.gif" alt="阿里云" width="1000" height="60"></a></div><div class="blank2"></div>
+</div>
+<div class="blank3"></div>
+<div class="dxy_main">
+<div class="dxy_main_l">
+<div id="art_con">
+<div id="daohang">页面导航：  <a href="http://www.jb51.net/">首页</a> → <a href="http://www.jb51.net/list/index_84.htm" title="软件编程">软件编程</a> → <a href="http://www.jb51.net/list/list_233_1.htm" title="Android">Android</a> → 正文内容 Android监听判断网络连接<div class="blank3"></div></div>
+<div class="blank3"></div>
+<h1>Android中监听判断网络连接状态的方法</h1>
+<div id="art_info">
+投稿：junjie  字体：[<a href="javascript:turnbig()">增加</a> <a href="javascript:turnsmall()">减小</a>] 类型：转载 
+</div><!--end art_info-->
+<div class="blank3"></div>
+<div id="art_demo">这篇文章主要介绍了Android中监听判断网络连接状态的方法,介绍了是否有网络连接判断、连接的类型和监听网络状态的方法,需要的朋友可以参考下</div>
+<div class="blank3"></div>
+<div id="con_all">
+<script type="text/javascript">dy("bcall");</script><script type="text/javascript">var cpro_id = "u1892994";</script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1892994_0"><iframe id="cproIframe_u1892994_2" width="580" height="90" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(9).html" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(1)"></script>
+
+</div>
+<div id="art_content">
+<!--NEWSZW_HZH_BEGIN-->
+<p>在无网或网速差的状态下，没必要去连接服务器。<br>
+你可以使用 ConnectivityManager 来判断是否连到网络，以及网络类型。</p>
+<p><strong>判断是否有网络连接</strong></p>
+<p>下面的代码用ConnectivityManager查询是活动网络连接判断是否有Internet连接。<br>
+</p><div class="codetitle"><span><a style="CURSOR: pointer" data="55439" class="copybut" id="copybut55439" onclick="doCopy(&#39;code55439&#39;)"><u>复制代码</u></a></span> 代码如下:</div><div class="codebody" id="code55439"><br>
+ConnectivityManager cm =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);<br>
+&nbsp;<br>
+NetworkInfo activeNetwork = cm.getActiveNetworkInfo();<br>
+boolean isConnected = activeNetwork != null &amp;&amp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; activeNetwork.isConnectedOrConnecting();</div><p></p>
+<p><strong>判断Internet连接类型</strong></p>
+<p>连接类型可能是移动数据，WiMax,WIFI，以太网。可以通过类似下面的方法查询网络类型:<br>
+</p><div class="codetitle"><span><a style="CURSOR: pointer" data="47153" class="copybut" id="copybut47153" onclick="doCopy(&#39;code47153&#39;)"><u>复制代码</u></a></span> 代码如下:</div><div class="codebody" id="code47153">boolean isWiFi = activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;</div><p></p>
+<p>移动数据比WIFI耗电，应该注意。下载大文件应该延迟到有wifi以后。</p>
+<p><strong>监听连接改变</strong></p>
+<p>ConnectivityManager会在连接改变时发送广播”android.net.conn.CONNECTIVITY_CHANGE”，所以，注册，监听一下这个广播就可以：<br>
+</p><div class="codetitle"><span><a style="CURSOR: pointer" data="25127" class="copybut" id="copybut25127" onclick="doCopy(&#39;code25127&#39;)"><u>复制代码</u></a></span> 代码如下:</div><div class="codebody" id="code25127">&lt;action android:name="android.net.conn.CONNECTIVITY_CHANGE"/&gt;</div><br>
+每次从移动数据和WIFI间改变时都会触发，这个改变可能会很频繁。最好是只有当你之前暂停下载或更新的时候，才去监听这个广播。通常在下载或更新前先检查一次网络连接。<br>
+下节讲切换开关在manifest里声明的接收器.<p></p>
+<!--NEWSZW_HZH_END-->
+
+<div id="art_xg">
+<h4>您可能感兴趣的文章:</h4><ul><li><a href="http://www.jb51.net/article/62563.htm" title="Android中判断网络是否可用的代码分享" target="_blank">Android中判断网络是否可用的代码分享</a></li><li><a href="http://www.jb51.net/article/59969.htm" title="Android中判断是否有前置摄像头、后置摄像头的方法" target="_blank">Android中判断是否有前置摄像头、后置摄像头的方法</a></li><li><a href="http://www.jb51.net/article/56217.htm" title="Android中判断手机是否联网实例" target="_blank">Android中判断手机是否联网实例</a></li><li><a href="http://www.jb51.net/article/52851.htm" title="Android判断屏幕是横屏或是竖屏的简单实现方法" target="_blank">Android判断屏幕是横屏或是竖屏的简单实现方法</a></li><li><a href="http://www.jb51.net/article/52842.htm" title="Android实现判断手机未接来电及处理方法" target="_blank">Android实现判断手机未接来电及处理方法</a></li><li><a href="http://www.jb51.net/article/49410.htm" title="android开发教程之判断是手机还是平板的方法" target="_blank">android开发教程之判断是手机还是平板的方法</a></li><li><a href="http://www.jb51.net/article/64737.htm" title="android判断软件是否第一次运行的方法" target="_blank">android判断软件是否第一次运行的方法</a></li></ul>
+<div id="con_da2">
+<script type="text/javascript">dy("baidu580");</script><script type="text/javascript">var cpro_id = "u776243";</script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u776243_0"><iframe id="cproIframe_u776243_3" width="336" height="280" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(8).html" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(2)"></script>
+
+</div>
+</div>
+<div id="con_bo"></div>
+</div>
+<div class="blank3"></div>
+<div id="shoucang">
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+        <a class="bds_qzone" title="分享到QQ空间" href="http://www.jb51.net/article/51556.htm#">QQ空间</a>
+        <a class="bds_tsina" title="分享到新浪微博" href="http://www.jb51.net/article/51556.htm#">新浪微博</a>
+        <a class="bds_tqq" title="分享到腾讯微博" href="http://www.jb51.net/article/51556.htm#">腾讯微博</a>
+        <a class="bds_tsohu" title="分享到搜狐微博" href="http://www.jb51.net/article/51556.htm#">搜狐微博</a>
+        <a class="bds_renren" title="分享到人人网" href="http://www.jb51.net/article/51556.htm#">人人网</a>
+        <a class="bds_kaixin001" title="分享到开心网" href="http://www.jb51.net/article/51556.htm#">开心网</a>
+        <a class="bds_baidu" title="分享到百度搜藏" href="http://www.jb51.net/article/51556.htm#">百度搜藏</a>
+        <span class="bds_more">更多</span>
+		<a class="shareCount" href="http://www.jb51.net/article/51556.htm#" title="累计分享0次">0</a>
+    </div>
+</div>
+<div class="blank3"></div>
+<div class="tags">
+<strong>Tags：</strong><a href="http://img.jb51.net/tag/Android/1.htm" target="_blank" title="搜索关于Android的文章">Android</a> <a href="http://img.jb51.net/tag/%CD%F8%C2%E7%C1%AC%BD%D3/1.htm" target="_blank" title="搜索关于网络连接的文章">网络连接</a> 
+</div>
+<div class="blank3"></div>
+<div class="con_ff">
+<a title="复制本文链接发给你QQ/MSN上的好友" href="javascript: copyUserHomeToClipBoard()" rel="nofollow" class="button_link">复制链接</a><a href="javascript:addBookmark(document.title,document.location.href)" class="button_link">收藏本文</a><a href="javascript:doPrint();" class="button_link">打印本文</a><a href="javascript:closeWindow()" class="button_link">关闭本文</a><a href="http://www.jb51.net/index.htm" class="button_link">返回首页</a>
+</div>
+<div id="prenext">
+<div id="prv">上一篇：<a href="http://www.jb51.net/article/51555.htm" title="Android中实现Runnable接口简单例子">Android中实现Runnable接口简单例子</a></div><div id="next">下一篇：<a href="http://www.jb51.net/article/64737.htm">android判断软件是否第一次运行的方法</a></div>
+</div>
+<div class="blank3"></div>
+<div id="relatedarticle">
+<h2>相关文章</h2>
+<ul><li><span>2010-11-11</span><a href="http://www.jb51.net/article/25250.htm" title="android操作SQLite增删改减实现代码" target="_blank">android操作SQLite增删改减实现代码</a></li><li><span>2013-10-10</span><a href="http://www.jb51.net/article/42351.htm" title="Android 操作系统获取Root权限 原理详细解析" target="_blank">Android 操作系统获取Root权限 原理详细解析</a></li><li><span>2013-06-06</span><a href="http://www.jb51.net/article/38766.htm" title="Android HTTP发送请求和接收响应的实例代码" target="_blank">Android HTTP发送请求和接收响应的实例代码</a></li><li><span>2013-05-05</span><a href="http://www.jb51.net/article/36539.htm" title="Android 自动化测试经验分享 UiObejct.getFromParent()的使用方法" target="_blank">Android 自动化测试经验分享 UiObejct.getFromParent()的使用方法</a></li><li><span>2013-05-05</span><a href="http://www.jb51.net/article/37069.htm" title="Android用户界面开发之:TextView的使用实例" target="_blank">Android用户界面开发之:TextView的使用实例</a></li><li><span>2015-04-04</span><a href="http://www.jb51.net/article/63576.htm" title="Android权限控制之自定义权限" target="_blank">Android权限控制之自定义权限</a></li><li><span>2012-11-11</span><a href="http://www.jb51.net/article/31810.htm" title="Android中没有插入SD情况下的文件写入和读取方法" target="_blank">Android中没有插入SD情况下的文件写入和读取方法</a></li><li><span>2012-12-12</span><a href="http://www.jb51.net/article/32473.htm" title="android生命周期深入分析(二)" target="_blank">android生命周期深入分析(二)</a></li><li><span>2013-06-06</span><a href="http://www.jb51.net/article/38116.htm" title="android ListView 一些重要属性详解" target="_blank">android ListView 一些重要属性详解</a></li><li><span>2012-12-12</span><a href="http://www.jb51.net/article/32603.htm" title="android开发中常用的Eclipse快捷键详细整理" target="_blank">android开发中常用的Eclipse快捷键详细整理</a></li></ul>
+<div class="clear"></div></div>
+<div class="sm"><script type="text/javascript" charset="gb2312">dy("bdtxt");</script><script type="text/javascript">var cpro_id = "u1589648";</script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1589648_0"><iframe id="cproIframe_u1589648_4" width="670" height="90" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom.html" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(3)"></script>
+</div>
+<div id="comments">
+<h2>文章评论</h2>
+<div id="commentList">
+<div class="ds-thread" data-category="" data-thread-key="art_51556" data-title="Android中监听判断网络连接状态的方法" data-author-key="" data-url="http://www.jb51.net/article/51556.htm" id="ds-thread"><div id="ds-reset"><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://jb51.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://jb51.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://jb51.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a href="http://jb51.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多&#187;</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://jb51.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://jb51.duoshuo.com/login/netease/" rel="nofollow" class="ds-service-link ds-netease">网易</a></li><li><a href="http://jb51.duoshuo.com/login/sohu/" rel="nofollow" class="ds-service-link ds-sohu">搜狐</a></li><li><a href="http://jb51.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://jb51.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1257135415710940593">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="55815b317b8e8"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);">0条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post ds-post-placeholder">还没有评论，沙发等你来抢</li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">脚本之家正在使用多说</a></p></div></div>
+</div>
+</div>
+<div class="blank3"></div>
+<div class="sm"><script type="text/javascript" charset="gb2312">dy("sm");</script><b>友情提醒</b>：本站文件的解压密码：www.jb51.net (请使用最新的winrar)<a href="http://idc.jb51.net/" target="_blank" title="脚本云"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/idcjb51_468.gif" width="468" height="60"></a>
+</div>
+<div class="blank3"></div>
+<div id="hm_t_3717"><div style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px; max-width: none; max-height: none; border-radius: 0px; box-shadow: none; transition: none; -webkit-transition: none; text-align: left; box-sizing: content-box; width: 682px; height: 258px; background: none;"><div style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px; max-width: none; max-height: none; border-radius: 0px; box-shadow: none; transition: none; -webkit-transition: none; text-align: left; box-sizing: content-box; width: 100%; height: 100%; background: none;"></div></div></div>
+<div class="blank3"></div>
+</div>
+</div><!--end dxy_mainl-->
+<div class="dxy_main_r">
+<div class="rbg" id="art_1"><script type="text/javascript">dy("r1");</script><script async="" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-6384567588307613" data-ad-slot="2817964327" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="blank3"></div>
+<div class="r_title"><h6>最 近 更 新</h6></div>
+<div class="rightContent">
+<ul><li><a href="http://www.jb51.net/article/35625.htm" title="Android中button实现onclicklistener事件的两种方式" target="_blank">Android中button实现onclicklistener事件</a></li><li><a href="http://www.jb51.net/article/38759.htm" title="Android开发：TextView加入滚动条示例" target="_blank">Android开发：TextView加入滚动条示例</a></li><li><a href="http://www.jb51.net/article/35833.htm" title="Android SharedPreferences的使用分析" target="_blank">Android SharedPreferences的使用分析</a></li><li><a href="http://www.jb51.net/article/39020.htm" title="在android中实现类似uc和墨迹天气的左右拖动效果" target="_blank">在android中实现类似uc和墨迹天气的左右拖</a></li><li><a href="http://www.jb51.net/article/37709.htm" title="android中处理各种触摸事件的方法浅谈" target="_blank">android中处理各种触摸事件的方法浅谈</a></li><li><a href="http://www.jb51.net/article/52844.htm" title="Android实现字幕滚动的方法" target="_blank">Android实现字幕滚动的方法</a></li><li><a href="http://www.jb51.net/article/45907.htm" title="android实现程序自动升级到安装示例分享(下载android程序安装包)" target="_blank">android实现程序自动升级到安装示例分享(</a></li><li><a href="http://www.jb51.net/article/43360.htm" title="android Handler详细使用方法实例" target="_blank">android Handler详细使用方法实例</a></li><li><a href="http://www.jb51.net/article/54344.htm" title="Android开发之登录验证实例教程" target="_blank">Android开发之登录验证实例教程</a></li><li><a href="http://www.jb51.net/article/56295.htm" title="Android游戏源码分享之2048" target="_blank">Android游戏源码分享之2048</a></li></ul>
+</div>
+<div class="blank3"></div>
+<div id="art_2"><script type="text/javascript">dy("r2");</script><a href="http://click.aliyun.com/m/1044/" target="_blank"><img alt="" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/aliyun300.gif"></a><div class="blank3"></div></div>
+<div class="blank3"></div>
+<div class="r_title"><h6>热 点 排 行</h6></div>
+<div class="hotContent">
+<ul class="toplist"><li class="light"><span class="r_num">1</span><a href="http://www.jb51.net/article/41750.htm" title="微信公众平台开发入门教程(图文详解)" target="_blank">微信公众平台开发入门教程(图文详</a></li><li class="light"><span class="r_num">2</span><a href="http://www.jb51.net/article/50395.htm" title="一看就懂的Android APP开发入门教程" target="_blank">一看就懂的Android APP开发入门教</a></li><li class="light"><span class="r_num">3</span><a href="http://www.jb51.net/article/40108.htm" title="Android基础之使用Fragment控制切换多个页面" target="_blank">Android基础之使用Fragment控制切</a></li><li><span class="r_num">4</span><a href="http://www.jb51.net/article/31911.htm" title="Android应用开发SharedPreferences存储数据的使用方法" target="_blank">Android应用开发SharedPreferenc</a></li><li><span class="r_num">5</span><a href="http://www.jb51.net/article/32031.htm" title="android PopupWindow 和 Activity弹出窗口实现方式" target="_blank">android PopupWindow 和 Activit</a></li><li><span class="r_num">6</span><a href="http://www.jb51.net/article/32366.htm" title="Android Bitmap详细介绍" target="_blank">Android Bitmap详细介绍</a></li><li><span class="r_num">7</span><a href="http://www.jb51.net/article/37175.htm" title="解决Android SDK下载和更新失败的方法详解" target="_blank">解决Android SDK下载和更新失败的</a></li><li><span class="r_num">8</span><a href="http://www.jb51.net/article/32339.htm" title="Android 动画之TranslateAnimation应用详解" target="_blank">Android 动画之TranslateAnimati</a></li><li><span class="r_num">9</span><a href="http://www.jb51.net/article/51052.htm" title="六款值得推荐的android（安卓）开源框架简介" target="_blank">六款值得推荐的android（安卓）开</a></li><li><span class="r_num">10</span><a href="http://www.jb51.net/article/31886.htm" title="android listview优化几种写法详细介绍" target="_blank">android listview优化几种写法详</a></li></ul>
+</div>
+<div class="blank3"></div>
+<div id="art_3"><script type="text/javascript">dy("r3");</script><a href="http://www.021.net/" target="_blank"><img alt="" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/zs_300.gif"></a><div class="blank3"></div><div class="r_title"><h6>Js与CSS工具</h6></div>
+<div class="rightContent"><ul>
+<li><a href="http://www.jb51.net/tools/cssyasuo.shtml" target="_blank"><font color="red">CSS在线压缩格式化(中文)</font></a></li>
+<li><a href="http://www.codebeautifier.com/" target="_blank"><font color="red">css 格式化整理工具(英文)</font></a></li>
+<li><a href="http://www.jb51.net/csstidy/css_optimiser.php?lang=zh" target="_blank">CSS整形格式化</a></li> 
+<li><a href="http://tools.jb51.net/tools/js_geshihua.asp" target="_blank"><font color="red">JavaScript 格式化整理工具</font></a></li>
+<li><a href="http://jsbeautifier.org/" target="_blank"><font color="red">jsbeautifier Js格式化整理工具(英文)</font></a></li>
+<li><a href="http://www.phpformatter.com/" target="_blank"><font color="red">php 格式化整理工具(英文)</font></a></li>
+<li><a href="http://www.jb51.net/tools/html-js.htm" target="_blank">HTML/JS互相转换工具</a></li>
+<li><a href="http://www.jb51.net/tools/packer.htm" target="_blank"><font color="red">javascript pack加密压缩工具</font></a></li>
+<li><a href="http://www.jb51.net/tools/jsmin/index.htm" target="_blank">JS Minifier压缩</a></li> 
+<li><a href="http://www.jb51.net/tools/JShunxiao.htm" target="_blank">JS混淆工具</a></li> 
+<li><a href="http://www.jb51.net/tools/js_Debug.htm" target="_blank">在线JS脚本校验器错误</a></li>
+<li><a href="http://tools.jb51.net/tools/regex.asp" target="_blank">JavaScript 正则表达式在线测试工具</a></li>
+</ul>
+</div>
+<div class="blank3"></div>
+<a href="http://www.enkj.com/encloud/" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/enkj_300.gif" width="300" height="100"></a><div class="blank2"></div><a href="http://www.geisnic.com/" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/gs.gif" width="300" height="100"></a><div class="blank3"></div>
+<div class="r_title"><h6>代码转换工具</h6></div>
+<div class="rightContent"><ul>
+<li><a href="http://www.jb51.net/tools/base64.htm" target="_blank">Base64编码加密</a></li>
+<li><a href="http://tools.jb51.net//tools/Escape.asp" target="_blank">Escape加解密</a></li>
+<li><a href="http://tools.jb51.net/html_ubb.asp" target="_blank">HTML/UBB代码转换</a></li>
+<li><a href="http://www.jb51.net/tools/fanjianzhi.htm" target="_blank">GB2312/BIG5繁简字转换</a></li>
+<li><a href="http://www.jb51.net/tools/jingdian.shtml" target="_blank">经典小工具集 数字转换</a></li>
+<li><a href="http://www.jb51.net/tools/htmlto.htm" target="_blank">HTML多功能代码转换器</a></li>
+<li><a href="http://www.jb51.net/tools/xunleijm.htm" target="_blank">迅雷快车加/解密</a></li>
+<li><a href="http://tools.jb51.net/tools/pinyin.asp" target="_blank">汉字转换拼音</a></li>
+</ul>
+</div>
+<div class="blank3"></div><a href="http://tuidc.com/" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/tengyou300.gif" width="300" height="100"></a><div class="blank3"></div><a href="http://www.33ip.com/" target="_blank"><img src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/33ip_300.gif" width="300" height="100"></a><div class="blank3"></div>
+</div>
+<div class="blank3"></div>
+<div id="baidu300"><script type="text/javascript">dy("baidu300_2");</script><script type="text/javascript">var cpro_id = "u1397867";</script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/c.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1397867_0" width="300px" height="250px" style="width: 300px; height: 250px; display: inline-block; z-index: 2147483646;"><iframe id="cproIframe_u1397867" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(10).html" width="300" height="250" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div><script charset="utf-8" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(4)"></script>
+</div>
+</div><!--end mainr-->
+<div class="clear"></div>
+</div><!--end main2-->
+</div>
+<div class="blank3"></div>
+
+<div id="footer">
+  <div id="footerinfo">
+   <div id="footercontent"><a href="http://www.jb51.net/about.htm" target="_blank">关于我们</a> - <a href="http://www.jb51.net/support.htm" target="_blank">广告合作</a> - <a href="http://www.jb51.net/linkus.htm" target="_blank">联系我们</a> -  <a href="http://www.jb51.net/sm.htm" target="_blank">免责声明</a> -  <a href="http://www.jb51.net/sitemap.htm" target="_blank">网站地图</a> - <a href="tencent://message/?uin=461478385&Site=http://www.jb51.net" target="_blank">投诉建议</a> - <a href="http://www.jb51.net/up.htm" target="_blank">在线投稿</a></div>
+    <div id="footercopyrights">CopyRight &#169; 2006-2015 <a href="http://www.jb51.net/">脚本之家</a> JB51.Net , All Rights Reserved</div>
+  </div>
+  <div class="ewm"><img alt="脚本之家官方微信" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/weixin_jb51.gif"></div>
+</div>
+<!-- Baidu Button BEGIN -->
+<div id="logo_m_tp"></div>
+<div id="logo_r_tp"></div>
+<div id="tonglan1_tp"></div>
+<script type="text/javascript" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/foot.js"></script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/f.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u480030_0"></div><div id="cproIframe2002holder" style="box-sizing: content-box; padding: 0px; display: block; visibility: visible; border: none; float: none; overflow: hidden; position: fixed; z-index: 2147483646; width: 130px; height: 300px; right: 311px; top: 150px; background: none;"><div id="cproIframe2002CloseBtnWrap" style="box-sizing: content-box; position: absolute; top: 275px; left: 0px; cursor: pointer; width: 130px; height: 28px; z-index: 100; opacity: 0; background-color: rgb(153, 153, 153);"></div><div id="cproIframe2002CloseBtn" style="box-sizing: content-box; position: absolute; width: 130px; height: 20px; top: 280px; left: 0px; cursor: pointer; color: rgb(255, 255, 255); font-size: 12px; font-family: 微软雅黑; text-align: center; line-height: 20px; background-color: rgb(153, 153, 153);">关闭</div><div style="box-sizing: content-box; width: 120px; height: 270px; overflow: hidden; padding: 4px; border: 1px solid rgb(172, 172, 172);"><div style="display:none">-</div><iframe id="cproIframe2002" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(7).html" width="120" height="270" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div></div><div id="cproIframe2001holder" style="box-sizing: content-box; padding: 0px; display: block; visibility: visible; border: none; float: none; overflow: hidden; position: fixed; z-index: 2147483646; width: 130px; height: 300px; left: 311px; top: 150px; background: none;"><div id="cproIframe2001CloseBtnWrap" style="box-sizing: content-box; position: absolute; top: 275px; left: 0px; cursor: pointer; width: 130px; height: 28px; z-index: 100; opacity: 0; background-color: rgb(153, 153, 153);"></div><div id="cproIframe2001CloseBtn" style="box-sizing: content-box; position: absolute; width: 130px; height: 20px; top: 280px; left: 0px; cursor: pointer; color: rgb(255, 255, 255); font-size: 12px; font-family: 微软雅黑; text-align: center; line-height: 20px; background-color: rgb(153, 153, 153);">关闭</div><div style="box-sizing: content-box; width: 120px; height: 270px; overflow: hidden; padding: 4px; border: 1px solid rgb(172, 172, 172);"><div style="display:none">-</div><iframe id="cproIframe2001" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(6).html" width="120" height="270" align="center,center" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true"></iframe></div></div><script charset="utf-8" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/acom(5)"></script>
+<script type="text/javascript" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/shCore.js"></script>
+<script type="text/javascript" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/shAutoloader.js"></script>
+<script type="text/javascript"> 
+SyntaxHighlighter.autoloader(
+	'applescript			/jslib/syntaxhighlighter/scripts/shBrushAppleScript.js',
+	'actionscript3 as3		/jslib/syntaxhighlighter/scripts/shBrushAS3.js',
+	'bash shell				/jslib/syntaxhighlighter/scripts/shBrushBash.js',
+	'coldfusion cf			/jslib/syntaxhighlighter/scripts/shBrushColdFusion.js',
+	'cpp c					/jslib/syntaxhighlighter/scripts/shBrushCpp.js',
+	'obj-c objc				/jslib/syntaxhighlighter/scripts/shBrushObjC.js',
+	'c# c-sharp csharp		/jslib/syntaxhighlighter/scripts/shBrushCSharp.js',
+	'css					/jslib/syntaxhighlighter/scripts/shBrushCss.js',
+	'delphi pascal			/jslib/syntaxhighlighter/scripts/shBrushDelphi.js',
+	'diff patch pas			/jslib/syntaxhighlighter/scripts/shBrushDiff.js',
+	'erl erlang				/jslib/syntaxhighlighter/scripts/shBrushErlang.js',
+	'groovy					/jslib/syntaxhighlighter/scripts/shBrushGroovy.js',
+	'haxe hx				/jslib/syntaxhighlighter/scripts/shBrushHaxe.js',
+	'java					/jslib/syntaxhighlighter/scripts/shBrushJava.js',
+	'jfx javafx				/jslib/syntaxhighlighter/scripts/shBrushJavaFX.js',
+	'js jscript javascript	/jslib/syntaxhighlighter/scripts/shBrushJScript.js',
+	'perl pl				/jslib/syntaxhighlighter/scripts/shBrushPerl.js',
+	'php					/jslib/syntaxhighlighter/scripts/shBrushPhp.js',
+	'text plain				/jslib/syntaxhighlighter/scripts/shBrushPlain.js',
+	'py python				/jslib/syntaxhighlighter/scripts/shBrushPython.js',
+	'ruby rails ror rb		/jslib/syntaxhighlighter/scripts/shBrushRuby.js',
+	'scala					/jslib/syntaxhighlighter/scripts/shBrushScala.js',
+	'sql					/jslib/syntaxhighlighter/scripts/shBrushSql.js',
+	'vb vbnet				/jslib/syntaxhighlighter/scripts/shBrushVb.js',
+	'xml xhtml xslt html	/jslib/syntaxhighlighter/scripts/shBrushXml.js'
+);
+SyntaxHighlighter.all();
+</script>
+<div class="tongji"><script type="text/javascript" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/tongji.js"></script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/h.js" type="text/javascript"></script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/stat.php" language="JavaScript"></script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1585378" target="_blank" title="站长统计">站长统计</a><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/stat(1).php" language="JavaScript"></script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/core(1).php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=4180674" target="_blank" title="站长统计">站长统计</a><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/stat(2).php" language="JavaScript"></script><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/core(2).php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=5835874" target="_blank" title="站长统计">站长统计</a><script src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/i.js" type="text/javascript"></script></div>
+<script type="text/javascript" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/pl.asp"></script>
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=50347" src="./Android中监听判断网络连接状态的方法_Android_脚本之家_files/bds_s_v2.js"></script>
+
+<!-- Baidu Button END -->
+<!-- Duoshuo Comment BEGIN -->
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
+var duoshuoQuery = {short_name:"jb51"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+
+<!-- published at 2015-4-23 8:44:34By dxycms qq:461478385  -->
+<div style="position: absolute; left: 1061px; top: 1072px; width: 56px; height: 17px; z-index: 9999;"><embed id="ZeroClipboardMovie_1" src="http://img.jb51.net/js/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="56" height="17" name="ZeroClipboardMovie_1" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=56&amp;height=17" wmode="transparent"></div><div style="position: absolute; left: 1061px; top: 1361px; width: 56px; height: 17px; z-index: 9999;"><embed id="ZeroClipboardMovie_2" src="http://img.jb51.net/js/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="56" height="17" name="ZeroClipboardMovie_2" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=2&amp;width=56&amp;height=17" wmode="transparent"></div><div style="position: absolute; left: 1061px; top: 1560px; width: 56px; height: 17px; z-index: 9999;"><embed id="ZeroClipboardMovie_3" src="http://img.jb51.net/js/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="56" height="17" name="ZeroClipboardMovie_3" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=3&amp;width=56&amp;height=17" wmode="transparent"></div></body></html>

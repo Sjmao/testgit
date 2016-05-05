@@ -1,0 +1,170 @@
+﻿<html>
+<title>Android</title>
+<head>
+
+<PRE>
+<body>
+<xmp>
+............................................................................
+<边框形状>
+ "<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <solid android:color="#FFFFFF" />
+
+    <corners android:radius="1dip" />
+
+    <stroke
+        android:width="1px"
+        android:color="#D9D9D9" />"
+
+</shape>
+............................................................................
+<边框形状详细控制>
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- 连框颜色值 -->
+    <item>
+        <shape>
+            <solid android:color="#D1D1D1" />
+            
+        </shape>
+    </item>
+    <!-- 主体背景颜色值 -->
+    <item android:bottom="1dp" android:right="1dp" android:left="0dp" android:top="0dp">
+        <shape>
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+</layer-list>
+
+............................................................................
+<webView添加本地html>
+WebView 载入本地的html
+1、可以是用loadData，这种方法需要先将html文件读取出来，以字符串传入loadData，可以展示页面，但是不会引用css、js等文件。
+
+2、使用loadUrl，不过需要注意，这里因为是使用本地数据，所以传入的url需要做些处理，例如：
+
+　　a、如果html文件存于assets：则加前缀：file:///android_asset/
+
+　　b、如果html文件存于sdcard：则加前缀：content://com.android.htmlfileprovider/sdcard/
+
+　　　　注意：content前缀可能导致异常，直接使用file:///sdcard/ or file:/sdcard也可以
+
+............................................................................
+
+onDraw什么时候被调用
+
+1、onDraw是在View初化完成之后开始调用
+2、postInvalidate()是重绘的，也就是调用postInvalidate()后系统会重新调用onDraw方法画一次
+
+
+............................................................................
+对单边颜色设置
+
+<?xml version="1.0" encoding="UTF-8"?>  
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">   
+<!-- 连框颜色值 --><item>   
+      <shape>   
+            <solid android:color="#ff0000" />   
+      </shape>   
+</item>   
+<!-- 主体背景颜色值 -->  
+<item android:bottom="3dp" android:right="3dp">   
+     <shape>   
+           <solid android:color="#ffffff" />  
+             
+           <padding android:bottom="10dp"  
+                android:left="10dp"  
+                android:right="10dp"  
+                android:top="10dp" />  
+     </shape>       
+</item>  
+</layer-list>  
+............................................................................
+百度地图设置经纬度（中心点）
+//初始化地图
+    MapView mMapView = (MapView) findViewById(R.id.map);
+BaiduMap mBaidumap = mMapView.getMap();
+
+//设定中心点坐标 
+
+        LatLng cenpt = new LatLng(29.806651,121.606983); 
+        //定义地图状态
+        MapStatus mMapStatus = new MapStatus.Builder()
+        .target(cenpt)
+        .zoom(18)
+        .build();
+        //定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
+
+
+        MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
+        //改变地图状态
+        mBaidumap.setMapStatus(mMapStatusUpdate);
+        
+............................................................................  
+PopupWindow位置设置
+      
+         popupWindow.showAtLocation(findViewById(R.id.RelativeLayout1), 
+                Gravity.CENTER | Gravity.CENTER, 0, 0);//在屏幕的中间位置显示 
+        popupWindow.update();
+        
+ ............................................................................  
+ 设置窗体的透明度       
+        WindowManager.LayoutParams lp = getWindow().getAttributes();  
+        lp.alpha = 0.25f;
+           getWindow().setAttributes(lp); 
+
+ ............................................................................ 
+ 获取手机的高度，宽度（mInstance=context=getActivity）
+public static int getPhoneHeight(){
+		
+	  String dpi=null;
+      WindowManager wm = (WindowManager) mInstance.getSystemService(mInstance.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        DisplayMetrics dm = new DisplayMetrics(); 
+        @SuppressWarnings("rawtypes")
+        Class c;
+        try {
+            c = Class.forName("android.view.Display");
+            @SuppressWarnings("unchecked")
+            Method method = c.getMethod("getRealMetrics",DisplayMetrics.class);
+            method.invoke(display, dm);
+            dpi=dm.widthPixels+"*"+dm.heightPixels;
+        }catch(Exception e){
+            e.printStackTrace();
+        }  
+        return dm.heightPixels;
+    }
+............................................................................ 
+判断手机是否含有虚拟键
+ViewConfiguration.get(getActivity()).hasPermanentMenuKey() 判断手机有无虚拟键（true 无）
+............................................................................ 
+圆形背景设置
+<?xml version="1.0" encoding="UTF-8"?>
+<shape 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:useLevel="false" >
+    <solid android:color="@color/common_red" />
+    <padding 
+		android:left="2dp" 
+		android:top="1dp" 
+		android:right="2dp" 
+		android:bottom="1dp" />
+    <solid
+        android:color="@color/common_red" />
+    <stroke
+        android:width="1dp"
+        android:color="@android:color/white" />
+    <size android:width="15dp"
+          android:height="15dp" />
+</shape>
+............................................................................ 
+</xmp>
+</body>
+</PRE>
+</head>
+</html>
